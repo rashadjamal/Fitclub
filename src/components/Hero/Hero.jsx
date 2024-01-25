@@ -4,15 +4,17 @@ import Header from './Header/Header';
 import hero_image from "../../components/assets/hero_image.png"
 import hero_image_black from "../../components/assets/hero_image_back.png"
 import Heart from '../../components/assets/heart.png';
-import Calories  from '../../components/assets/calories.png'
+import Calories  from '../../components/assets/calories.png';
+import NumberCounter from 'number-counter'
 
 import {motion} from 'framer-motion'
 
 const Hero = () => {
 
   const transition = {type: 'spring', duration : 3}
+  const mobile = window.innerWidth<=768 ? true : false;
   return (
-    <div className='hero'>
+    <div className='hero' id='home'>
 
          <div className='blur  hero-blur'></div>
         <div className='left-h'>
@@ -20,7 +22,7 @@ const Hero = () => {
 {/* the best add */}
        <div className='the-best-ad'>
       <motion.div
-      initial={{left: '238'}}
+      initial={{left: mobile? '165px': "238px"}}
       whileInView={{left: '8px'}}
       transition={{...transition,type:'tween'}}
       >
@@ -46,15 +48,21 @@ const Hero = () => {
       {/* figuress */}
       <div className='figures'>
         <div>
-          <span>+140</span>
+          <span>
+          <NumberCounter end={140} start={100}  dealy='4' preFix="+"/>
+          </span>
           <span>expert coachs</span>
         </div>
         <div>
-          <span>+978</span>
+          <span>
+          <NumberCounter end={978} start={800}  dealy='4' preFix="+"/>
+          </span>
           <span>members joined</span>
         </div>
         <div>
-          <span>+50</span>
+          <span>
+          <NumberCounter end={50} start={0}  dealy='4' preFix="+"/>
+          </span>
           <span>fitness programs</span>
         </div>
       </div>
